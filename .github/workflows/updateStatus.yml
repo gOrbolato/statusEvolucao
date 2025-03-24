@@ -1,0 +1,31 @@
+name: Update Last Repo Stats
+on:
+  schedule:
+    - cron: '0 18 * * *'  # Atualiza diariamente às 18h (BRT)
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Fetch repository data
+        run: |
+          python scripts/fetch_stats.py
+          python scripts/update_readme.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "Guilherme Orbolato"
+          git config --global user.email "orbolato.guilherme@gmail.com"
+          git add README.md
+          git commit -m "🔄 Update last repo stats"
+          git push
