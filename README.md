@@ -45,9 +45,6 @@
   <img src="https://img.shields.io/badge/VSCode-007ACC?style=flat&logo=visual-studio-code&logoColor=white" alt="VSCode">
 </div>
 
-## 📊 statusEvolucao
-![GitHub Evolution](https://gorbolato.github.io/statusEvolucao/)
-
 ## 📌 Destaques
 ✔️ Último projeto 100% responsivo  
 ✔️ Padrões de código limpo  
